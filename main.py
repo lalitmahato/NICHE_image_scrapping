@@ -15,8 +15,8 @@ print('Connection Status:\n',images_records)
 lodeJson = open('unitId.json', "r")
 uId_data = pd.read_json(lodeJson)
 
-end = 6527
-start = 3000
+end = 3000
+start = 0
 status_count = db['status'].count_documents({})
 print(status_count)
 total_uid = len(uId_data)
@@ -27,7 +27,7 @@ unable_to_scrap = 0
 while number < end:
 # while number < 1:
     print(number)
-    perc = scrap_data_count/total_uid * 100
+    perc = scrap_data_count/(end-start) * 100
     print("Completed: {} %".format(perc))
     print("Data Scraped: ", scrap_data_count)
     print("Institution Name: ", uId_data["Institution Name"][number])
